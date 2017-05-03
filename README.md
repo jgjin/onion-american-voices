@@ -1,5 +1,5 @@
 <h1> Description </h1>
-<p> A short, fun personal project which I wrote to not waste time as I waste time. </p>
+<p> A short, fun personal project which I wrote to not waste time as I waste time. Run parse.py and then visit.py after it finishes. </p>
 <h1> Dependencies </h1>
 <h2> Python </h2>
 <a href="https://www.python.org/downloads/"> Install Python </a>
