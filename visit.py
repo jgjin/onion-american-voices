@@ -1,8 +1,12 @@
 import webbrowser
 
 bookmark = 0
-with open("bookmark.txt", "r") as txt:
-    bookmark = int(txt.read())
+try:
+    with open("bookmark.txt", "r") as txt:
+        bookmark = int(txt.read())
+except IOError:
+    with open("bookmark.txt", "w") as txt:
+        txt.write("0\n")
 print "Last recorded first unviewed page index: " + str(bookmark)
 
 lines = []
