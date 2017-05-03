@@ -1,14 +1,15 @@
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 import requests
 
 with open("urls.txt", "w") as txt:
     page_index = 1
-    while True:
-        print "Processing page " + str(page_index)
-        r = requests.get("http://www.theonion.com/search?feature-type=american-voices&page=" + str(page_index))
+    valid = True
+    while valid:
+        print ("Processing page " + str(page_index))
+        req = requests.get("http://www.theonion.com/search?feature-type=american-voices&page=" + str(page_index))
         page_index += 1
-        if "The page you were seeking burned down." not in r.text:
-            soup = bs(r.text, "html")
+        if req.status_code == requests.codes.ok:
+            soup = BeautifulSoup(req.text, "html.parser")
             headlines = soup.find_all("h2")
             for headline in headlines:
                 try:
@@ -18,5 +19,6 @@ with open("urls.txt", "w") as txt:
                 except TypeError:
                     continue
         else:
-            break
-print "Finished."
+            valid = False
+
+print ("Finished")
