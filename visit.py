@@ -12,7 +12,7 @@ print ("Last recorded first unviewed page index: " + str(bookmark))
 write_bookmark = False
 with open("urls.txt", "r") as txt:
     lines = txt.readlines()
-    begin = int(input("Enter first page index: "))
+    begin = input("Enter first page index: ")
     end = begin + 10
     while begin < len(lines):
         message = "Viewing page(s) " + str(begin)
@@ -28,7 +28,7 @@ with open("urls.txt", "r") as txt:
         if end < len(lines):
             response = ""
             while response != "y" and response != "n":
-                response = input("Continue? (y/n): ")
+                response = raw_input("Continue? (y/n): ")
             if response == "y":
                 begin += 10
                 end += 10
@@ -40,10 +40,10 @@ with open("urls.txt", "r") as txt:
             break
 
 if write_bookmark:
-    print ("Recording first unviewed page index (" + str(bookmark) + ")")
+    print ("Writing first unviewed page index (" + str(bookmark) + ") to bookmark.txt")
     with open("bookmark.txt", "w") as txt:
         txt.write(str(bookmark))
 else:
-    print ("There are no pages")
+    print ("There are no more pages")
     
 print ("Finished")
