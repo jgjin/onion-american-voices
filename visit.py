@@ -13,7 +13,7 @@ print ("Last recorded first unviewed page index: " + str(bookmark))
 write_bookmark = False
 with open("urls.txt", "r") as txt:
     lines = txt.readlines()
-    begin = input("Enter first page index: ")
+    begin = int(input("Enter first page index: "))
     end = begin + 10
     while begin < len(lines):
         # Report pages to view
@@ -31,7 +31,7 @@ with open("urls.txt", "r") as txt:
         if end < len(lines):
             response = ""
             while response != "y" and response != "n":
-                response = raw_input("Continue? (y/n): ")
+                response = input("Continue? (y/n): ")
             if response == "y":
                 begin += 10
                 end += 10
